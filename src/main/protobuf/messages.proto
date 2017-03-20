@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+package protobuf;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/wrappers.proto";
+
+
+
+//import "entityactors.Messages.Command";
+//option java_package = "entityactors.Messages.Command";
+
+
+//option java_package = "entityactors";
+
+option (scalapb.options) = {
+  import: "entityactors.Messages.Command"
+};
+message User {
+    string firstName = 1;
+    string secondName = 2;
+    int32  age = 3;
+}
+
+
+//entities
+message User2 {
+    option (scalapb.message).extends = "entityactors.Messages.Entity";
+    string firstName = 1;
+    string secondName = 2;
+    int32 agentId = 3;
+    string foo = 4;
+    string bar = 5;
+}
+
+message Product {
+    string name = 1;
+    string type = 2;
+}
+
+
+
+//commands
+message CreateUser {
+    //  string s = 2  [(scalapb.field).type = "entityactors.Messages.Command"];
+    // implicit val weatherMapper = TypeMapper(WrappedWeather.apply)(_.weather)
+    option (scalapb.message).extends = "entityactors.Messages.Command";
+    User user = 1;
+}
+
+
+message DeleteUser {
+    //  option string command = 2; [(scalapb.field).type] = "entityactors.Messages.Command";
+    option (scalapb.message).extends = "entityactors.Messages.Command";
+    User user = 1;
+}
+
+message UpdateUser {
+    option (scalapb.message).extends = "entityactors.Messages.Command";
+    User user = 1;
+}
+
+
+
+message CreateSubscriber {
+    option (scalapb.message).extends = "entityactors.Messages.Command";
+    string name = 1;
+}
+
+
+
+
+// Events
+message UserCreated {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    User user = 1;
+}
+
+
+message UserUpdated {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    User user = 1;
+}
+
+message UserDeleted {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    string value = 1;
+}
+
+message ProductAdded {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    string value = 1;
+}
+
+message ProductDeleted {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    string value = 1;
+}
+
+
+
+
+//EntityState
+
+message EntityState {
+    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    string value = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

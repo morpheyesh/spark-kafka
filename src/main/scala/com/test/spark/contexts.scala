@@ -10,18 +10,29 @@ import org.apache.spark.streaming._
   * Helpers for context
   *
   */
-object SparkContext {
 
-  def getContext(conf: SparkConf): SparkContext = {
+object Settings {
+
+  object SparkContext {
+
+    def getContext(conf: SparkConf): SparkContext = {
       new SparkContext(conf)
-  }
+    }
 
- /* def getStreamingContext(conf: SparkConf): StreamingContext = {
+    /* def getStreamingContext(conf: SparkConf): StreamingContext = {
     new StreamingContext()
 
   }
 */
-  def stopContext(sc: SparkContext): Unit = {
+    def stopContext(sc: SparkContext): Unit = {
       sc.stop()
+    }
   }
+
+
+
+
+
 }
+
+

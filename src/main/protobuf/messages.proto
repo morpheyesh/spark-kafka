@@ -7,14 +7,14 @@ import "google/protobuf/wrappers.proto";
 
 
 
-//import "entityactors.Messages.Command";
-//option java_package = "entityactors.Messages.Command";
+//import "entity.Messages.Command";
+//option java_package = "entity.Messages.Command";
 
 
-//option java_package = "entityactors";
+//option java_package = "entity";
 
 option (scalapb.options) = {
-  import: "entityactors.Messages.Command"
+  import: "entity.Messages.Command"
 };
 message User {
     string firstName = 1;
@@ -25,7 +25,7 @@ message User {
 
 //entities
 message User2 {
-    option (scalapb.message).extends = "entityactors.Messages.Entity";
+    option (scalapb.message).extends = "entity.Messages.Entity";
     string firstName = 1;
     string secondName = 2;
     int32 agentId = 3;
@@ -42,28 +42,28 @@ message Product {
 
 //commands
 message CreateUser {
-    //  string s = 2  [(scalapb.field).type = "entityactors.Messages.Command"];
+    //  string s = 2  [(scalapb.field).type = "entity.Messages.Command"];
     // implicit val weatherMapper = TypeMapper(WrappedWeather.apply)(_.weather)
-    option (scalapb.message).extends = "entityactors.Messages.Command";
+    option (scalapb.message).extends = "entity.Messages.Command";
     User user = 1;
 }
 
 
 message DeleteUser {
-    //  option string command = 2; [(scalapb.field).type] = "entityactors.Messages.Command";
-    option (scalapb.message).extends = "entityactors.Messages.Command";
+    //  option string command = 2; [(scalapb.field).type] = "entity.Messages.Command";
+    option (scalapb.message).extends = "entity.Messages.Command";
     User user = 1;
 }
 
 message UpdateUser {
-    option (scalapb.message).extends = "entityactors.Messages.Command";
+    option (scalapb.message).extends = "entity.Messages.Command";
     User user = 1;
 }
 
 
 
 message CreateSubscriber {
-    option (scalapb.message).extends = "entityactors.Messages.Command";
+    option (scalapb.message).extends = "entity.Messages.Command";
     string name = 1;
 }
 
@@ -72,28 +72,28 @@ message CreateSubscriber {
 
 // Events
 message UserCreated {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     User user = 1;
 }
 
 
 message UserUpdated {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     User user = 1;
 }
 
 message UserDeleted {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     string value = 1;
 }
 
 message ProductAdded {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     string value = 1;
 }
 
 message ProductDeleted {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     string value = 1;
 }
 
@@ -103,7 +103,7 @@ message ProductDeleted {
 //EntityState
 
 message EntityState {
-    option (scalapb.message).extends = "entityactors.Messages.EntityEvent";
+    option (scalapb.message).extends = "entity.Messages.EntityEvent";
     string value = 1;
 }
 
